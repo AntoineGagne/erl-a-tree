@@ -1,5 +1,32 @@
 -module(a_tree).
 
+-moduledoc """
+A module for interacting with an `ATree`.
+
+# Examples
+
+```erlang
+1> {ok, Tree} = a_tree:new([
+    {boolean, <<"private">>},
+    {string, <<"country">>},
+    {integer, <<"exchange_id">>},
+    {string, <<"city">>},
+    {string_list, <<"deals">>},
+    {integer_list, <<"segment_ids">>}
+]).
+2> ok = a_tree:insert(Tree, 1, <<"exchange_id = 1 and not private and deals one of [\"deal-1\", \"deal-2\"]">>).
+3> ok = a_tree:insert(Tree, 2, <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [1, 2, 3, 4]">>).
+4> ok = a_tree:insert(Tree, 3, <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [5, 6, 7, 8] and country in [\"CA\", \"US\"]">>).
+5> {ok, Results} = a_tree:search([
+    {<<"private">>, false},
+    {<<"exchange_id">>, 1},
+    {<<"deals">>, [<<"deal-1">>, <<"deal-3">>]},
+    {<<"segment_ids">>, [2, 3]},
+    {<<"country">>, <<"CA">>}
+]).
+```
+""".
+
 -export([new/1, insert/3, search/2, delete/2]).
 
 -include("cargo.hrl").
@@ -30,20 +57,36 @@
 %%% API
 %%%===================================================================
 
+-doc """
+Create a new `atree()`.
+
+The attributes must all be different otherwise an error will be returned.
+""".
 -spec new(Attributes :: [attribute()]) -> {ok, atree()} | {error, term()}.
 new(_Attributes) ->
     ?NOT_LOADED.
 
+-doc """
+Insert a new arbitrary boolean expression inside the `atree()` with the specified `user_id()`.
+
+The boolean expression must contain defined attributes with the correct types otherwise an error will be returned.
+""".
 -spec insert(ATree :: atree(), Id :: user_id(), Expression :: binary()) ->
     ok | {error, term()}.
 insert(_ATree, _Id, _Expression) ->
     ?NOT_LOADED.
 
+-doc """
+Search for boolean expressions that match the specified event.
+""".
 -spec search(ATree :: atree(), Event :: event()) ->
     {ok, Matches :: [user_id()]} | {error, term()}.
 search(_ATree, _Event) ->
     ?NOT_LOADED.
 
+-doc """
+Remove the specified boolean expression from the `atree()`.
+""".
 -spec delete(ATree :: atree(), Id :: user_id()) -> ok.
 delete(_ATree, _Id) ->
     ?NOT_LOADED.
