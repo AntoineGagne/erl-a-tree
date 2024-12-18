@@ -58,7 +58,7 @@ A module for interacting with an `ATree`.
 %%%===================================================================
 
 -doc """
-Create a new `atree()`.
+Create a new `t:atree/0`.
 
 The attributes must all be different otherwise an error will be returned.
 """.
@@ -67,7 +67,7 @@ new(_Attributes) ->
     ?NOT_LOADED.
 
 -doc """
-Insert a new arbitrary boolean expression inside the `atree()` with the specified `user_id()`.
+Insert a new arbitrary boolean expression inside the `t:atree/0` with the specified `t:user_id/0`.
 
 The boolean expression must contain defined attributes with the correct types otherwise an error will be returned.
 """.
@@ -85,7 +85,7 @@ search(_ATree, _Event) ->
     ?NOT_LOADED.
 
 -doc """
-Remove the specified boolean expression from the `atree()`.
+Remove the specified boolean expression from the `t:atree/0`.
 """.
 -spec delete(ATree :: atree(), Id :: user_id()) -> ok.
 delete(_ATree, _Id) ->
