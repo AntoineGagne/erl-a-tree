@@ -1,4 +1,4 @@
-name: Erlang CI
+name: Erlang
 on: [push]
 jobs:
   check:
