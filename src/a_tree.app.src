@@ -1,10 +1,10 @@
 {application, a_tree, [
-    {description, "An OTP library"},
-    {vsn, "0.1.0"},
+    {description, "A NIF wrapper for the https://crates.io/crates/a-tree crate "},
+    {vsn, "git"},
     {registered, []},
     {applications, [kernel, stdlib]},
     {env, []},
     {modules, []},
-    {licenses, ["Apache 2.0"]},
-    {links, []}
+    {licenses, ["Apache 2.0", "MIT"]},
+    {links, [{"Github", "https://github.com/AntoineGagne/erl-a-tree"}]}
 ]}.
