@@ -1,14 +1,11 @@
 -module(a_tree).
 
--export([
-    new/1,
-    insert/3,
-    search/2,
-    delete/2
-]).
+-export([new/1, insert/3, search/2, delete/2]).
 
 -include("cargo.hrl").
+
 -on_load(init/0).
+
 -define(NOT_LOADED, not_loaded(?LINE)).
 
 -type attribute() :: {attribute_type(), attribute_name()}.
@@ -42,7 +39,8 @@ new(_Attributes) ->
 insert(_ATree, _Id, _Expression) ->
     ?NOT_LOADED.
 
--spec search(ATree :: atree(), Event :: event()) -> {ok, Matches :: [user_id()]} | {error, term()}.
+-spec search(ATree :: atree(), Event :: event()) ->
+    {ok, Matches :: [user_id()]} | {error, term()}.
 search(_ATree, _Event) ->
     ?NOT_LOADED.
 
