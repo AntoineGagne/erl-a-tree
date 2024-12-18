@@ -1,7 +1,7 @@
 name: Erlang CI
 on: [push]
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,10 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust
-        run: rustup update stable
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Cache
         uses: actions/cache@v4
         env:
@@ -33,5 +30,5 @@ jobs:
             ci-${{runner.os}}-${{env.cache-name}}-erlang-rebar3
             ci-${{runner.os}}-${{env.cache-name}}-erlang
 
-      - name: Checks
+      - name: Check
         run: rebar3 ${{matrix.action}}
