@@ -1,6 +1,6 @@
 # a-tree
 
-[![Erlang CI](https://github.com/AntoineGagne/erl-a-tree/actions/workflows/erlang.yml/badge.svg)](https://github.com/AntoineGagne/erl-a-tree/actions/workflows/erlang.yml)
+[![Erlang](https://github.com/AntoineGagne/erl-a-tree/actions/workflows/erlang.yml/badge.svg)](https://github.com/AntoineGagne/erl-a-tree/actions/workflows/erlang.yml)
 
 Erlang NIF for the [`a-tree`](https://github.com/AntoineGagne/a-tree) library.
 
