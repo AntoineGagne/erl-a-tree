@@ -1,0 +1,34 @@
+name: Erlang CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        action:
+          - fmt -c
+          - eunit
+          - ct
+          - proper
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        run: rustup update stable
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
+      - name: Cache
+        uses: actions/cache@v4
+        env:
+          cache-name: rebar3
+        with:
+          path: |
+            ~/.cache/rebar3
+            _build
+          key: ci-${{runner.os}}-${{env.cache-name}}-erlang-rebar3-${{hashFiles('rebar.lock')}}
+          restore-keys: |
+            ci-${{runner.os}}-${{env.cache-name}}-erlang-rebar3
+            ci-${{runner.os}}-${{env.cache-name}}-erlang
+
+      - name: Checks
+        run: rebar3 ${{matrix.action}}
