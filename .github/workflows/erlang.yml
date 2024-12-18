@@ -11,6 +11,9 @@ jobs:
           - ct
           - proper
 
+    container:
+      image: erlang:27
+
     steps:
       - uses: actions/checkout@v4
       - name: Install Rust
