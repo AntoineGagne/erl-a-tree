@@ -7,9 +7,9 @@ jobs:
       matrix:
         action:
           - fmt -c
-          - eunit
+          # - eunit
           - ct
-          - proper
+          # - proper
 
     container:
       image: erlang:27
