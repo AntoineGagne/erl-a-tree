@@ -5,6 +5,7 @@
     {applications, [kernel, stdlib]},
     {env, []},
     {modules, []},
+    {include_paths, ["src", "test", "native"]},
     {licenses, ["MIT", "Apache-2.0"]},
     {links, [{"Github", "https://github.com/AntoineGagne/erl-a-tree"}]}
 ]}.
