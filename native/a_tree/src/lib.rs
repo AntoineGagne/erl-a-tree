@@ -97,6 +97,16 @@ fn delete(atree: ATreeArc, id: u64) -> NifResult<Atom> {
     Ok(atoms::ok())
 }
 
+#[rustler::nif(name = "to_graphviz")]
+fn to_graphviz(atree: ATreeArc) -> NifResult<(Atom, String)> {
+    let locked = atree
+        .0
+        .write()
+        .map_err(|_| Error::Term(Box::new(atoms::lock_fail())))?;
+    let graphviz = locked.to_graphviz();
+    Ok((atoms::ok(), graphviz))
+}
+
 #[derive(NifUntaggedEnum)]
 enum EventType<'a> {
     Boolean(bool),
