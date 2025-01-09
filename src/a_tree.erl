@@ -27,7 +27,13 @@ A module for interacting with an `ATree`.
 ```
 """.
 
--export([new/1, insert/3, search/2, delete/2]).
+-export([
+    new/1,
+    insert/3,
+    search/2,
+    delete/2,
+    to_graphviz/1
+]).
 
 -include("cargo.hrl").
 
@@ -89,6 +95,13 @@ Remove the specified boolean expression from the `t:atree/0`.
 """.
 -spec delete(ATree :: atree(), Id :: user_id()) -> ok.
 delete(_ATree, _Id) ->
+    ?NOT_LOADED.
+
+-doc """
+Export the `t:atree/0` to Graphviz format.
+""".
+-spec to_graphviz(ATree :: atree()) -> {ok, binary()} | {error, term()}.
+to_graphviz(_ATree) ->
     ?NOT_LOADED.
 
 %%%===================================================================

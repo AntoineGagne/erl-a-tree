@@ -15,18 +15,30 @@
     {integer_list, <<"segment_ids">>}
 ]).
 -define(AN_ID, 1).
--define(AN_EXPRESSION,
-    <<"exchange_id = 1 and not private and deals one of [\"deal-1\", \"deal-2\"]">>
-).
+-define(AN_EXPRESSION, <<
+    "exchange_id = 1 and not private and deals one of [\"deal-1\", "
+    "\"deal-2\"]"
+>>).
 -define(AN_INVALID_EXPRESSION, <<"exchange_id = 1 and deals one of [\"deal-1\"">>).
 -define(AN_EXPRESSION_WITH_A_NON_EXISTING_ATTRIBUTE, <<"a_string = \"test\"">>).
 -define(SOME_VALID_EXPRESSIONS_AND_IDS, [
-    {?AN_ID, <<"exchange_id = 1 and not private and deals one of [\"deal-1\", \"deal-2\"]">>},
-    {2, <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"]">>},
-    {3,
-        <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [1, 2, 3, 4]">>},
-    {4,
-        <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [5, 6, 7, 8] and country in [\"CA\", \"US\"]">>}
+    {?AN_ID, <<
+        "exchange_id = 1 and not private and deals one of [\"deal-1\", "
+        "\"deal-2\"]"
+    >>},
+    {2, <<
+        "exchange_id = 1 and not private and deals one of [\"deal-2\", "
+        "\"deal-3\"]"
+    >>},
+    {3, <<
+        "exchange_id = 1 and not private and deals one of [\"deal-2\", "
+        "\"deal-3\"] and segment_ids one of [1, 2, 3, 4]"
+    >>},
+    {4, <<
+        "exchange_id = 1 and not private and deals one of [\"deal-2\", "
+        "\"deal-3\"] and segment_ids one of [5, 6, 7, 8] and country "
+        "in [\"CA\", \"US\"]"
+    >>}
 ]).
 -define(AN_EVENT, [
     {<<"private">>, false},
@@ -144,6 +156,11 @@ deleting_a_non_existing_expression_ignores_it(Config) ->
     Tree = proplists:get_value(tree, Config),
 
     ?assertEqual(ok, a_tree:delete(Tree, ?AN_ID)).
+
+can_export_to_graphviz_format(Config) ->
+    Tree = proplists:get_value(tree, Config),
+
+    ?assertMatch({ok, _}, a_tree:to_graphviz(Tree)).
 
 %%%===================================================================
 %%% Internal functions
