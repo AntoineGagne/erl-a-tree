@@ -12,4 +12,4 @@ crate-type = ["dylib"]
 
 [dependencies]
 a-tree = "0.4.1"
-rustler = "0.35"
+rustler = "0.36"
