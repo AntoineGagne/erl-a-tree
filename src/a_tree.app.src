@@ -1,5 +1,6 @@
 {application, a_tree, [
-    {description, "A NIF wrapper for the https://crates.io/crates/a-tree crate "},
+    {description,
+        "A dynamic data structure for efficiently indexing arbitrary boolean expressions"},
     {vsn, "git"},
     {registered, []},
     {applications, [kernel, stdlib]},

@@ -82,7 +82,7 @@ fn search(atree: ATreeArc, attributes: Vec<(&str, EventType)>) -> NifResult<(Ato
         }
     }
     let event = builder.build().map_err(from_event_error)?;
-    let report = locked.search(event).map_err(from_error)?;
+    let report = locked.search(&event).map_err(from_error)?;
     let matches = report.matches().iter().cloned().cloned().collect();
     Ok((atoms::ok(), matches))
 }
