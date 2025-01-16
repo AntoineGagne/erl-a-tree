@@ -17,7 +17,7 @@ A module for interacting with an `ATree`.
 2> ok = a_tree:insert(Tree, 1, <<"exchange_id = 1 and not private and deals one of [\"deal-1\", \"deal-2\"]">>).
 3> ok = a_tree:insert(Tree, 2, <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [1, 2, 3, 4]">>).
 4> ok = a_tree:insert(Tree, 3, <<"exchange_id = 1 and not private and deals one of [\"deal-2\", \"deal-3\"] and segment_ids one of [5, 6, 7, 8] and country in [\"CA\", \"US\"]">>).
-5> {ok, Results} = a_tree:search([
+5> {ok, Results} = a_tree:search(Tree, [
     {<<"private">>, false},
     {<<"exchange_id">>, 1},
     {<<"deals">>, [<<"deal-1">>, <<"deal-3">>]},
