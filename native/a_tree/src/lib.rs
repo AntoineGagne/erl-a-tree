@@ -1,8 +1,12 @@
 use a_tree::{ATree, ATreeError, AttributeDefinition, EventError};
+use mimalloc::MiMalloc;
 use rustler::{
     resource_impl, Atom, Error, NifResult, NifUnitEnum, NifUntaggedEnum, Resource, ResourceArc,
 };
 use std::sync::RwLock;
+
+#[global_allocator]
+static GLOBAL: MiMalloc = MiMalloc;
 
 struct ATreeResource(RwLock<ATree<u64>>);
 
