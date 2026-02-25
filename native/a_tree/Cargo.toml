@@ -11,6 +11,6 @@ path = "src/lib.rs"
 crate-type = ["dylib"]
 
 [dependencies]
-a-tree = "0.5.0"
+a-tree = "0.5.1"
 mimalloc = "0.1.43"
 rustler = "0.37"
