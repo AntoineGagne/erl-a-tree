@@ -13,4 +13,4 @@ crate-type = ["dylib"]
 [dependencies]
 a-tree = "0.5.1"
 mimalloc = "0.1.43"
-rustler = "0.37"
+rustler = "0.38"
