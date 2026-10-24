@@ -150,7 +150,7 @@ can_delete_an_expression_from_a_tree(Config) ->
     Results2 = a_tree:search(Tree, ?AN_EVENT),
     ?assertMatch({ok, _}, Results2),
     {ok, Matches2} = Results2,
-    ?assertEqual([1, 3], Matches2).
+    ?assertEqual([1, 3], lists:sort(Matches2)).
 
 deleting_a_non_existing_expression_ignores_it(Config) ->
     Tree = proplists:get_value(tree, Config),
